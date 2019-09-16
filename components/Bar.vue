@@ -1,11 +1,11 @@
 <template>
   <div>
     <div
-      style="height: 60px; width: 500px; outline: 1px solid red; position: relative;  margin:10px"
+      style="height: 60px; width: 100px; outline: 1px solid red; position: relative;  margin:10px"
     >
       <vue-draggable-resizable
-        :x="x"
-        :w="100"
+        :x="value[0]"
+        :w="10"
         :h="60"
         :parent="true"
         :axis="axis"
@@ -16,9 +16,16 @@
         @resizing="onResize"
       >
         <div class="child"></div>
+        <p></p>
       </vue-draggable-resizable>
     </div>
-    <vue-slider ref="slider" v-model="value" :enable-cross="false"></vue-slider>
+    <div>
+      <vue-slider
+        ref="slider"
+        v-model="value"
+        :enable-cross="false"
+      ></vue-slider>
+    </div>
   </div>
 </template>
 <script>
@@ -27,23 +34,21 @@ import "vue-slider-component/theme/default.css";
 export default {
   data: function() {
     return {
-      width: 60,
+      width: 10,
       height: 0,
       axis: "x",
       x: 0,
       value: [0, 30]
     };
   },
-  mounted() {
-    console.log(this.value);
-  },
+  computed: {},
   methods: {
     onResize: function(x, _, width) {
       this.x = x;
       this.width = width;
     },
     test: function() {
-      console.log(this.value);
+      console.log(this.$refs.slider.getValue());
     }
   }
 };
@@ -53,37 +58,5 @@ export default {
 .child {
   outline: solid 2px blue;
   height: 100%;
-}
-.handle {
-  position: absolute;
-  background-color: pink;
-  border: 1px solid black;
-  border-radius: 50%;
-  height: 14px;
-  width: 14px;
-
-  -webkit-transition: all 300ms linear;
-  -ms-transition: all 300ms linear;
-  transition: all 300ms linear;
-}
-
-.handle-ml {
-  top: 50%;
-  margin-top: -7px;
-  left: -14px;
-  cursor: w-resize;
-}
-
-.handle-mr {
-  top: 50%;
-  margin-top: -7px;
-  right: -14px;
-  cursor: e-resize;
-}
-
-.handle-ml:hover,
-.handle-mr:hover {
-  background-color: red;
-  transform: scale(1.4);
 }
 </style>

@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <video src=""></video>
+  </div>
 </template>
 <script>
 export default {
