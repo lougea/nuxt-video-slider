@@ -18,22 +18,32 @@
         <div class="child"></div>
       </vue-draggable-resizable>
     </div>
+    <vue-slider ref="slider" v-model="value" :enable-cross="false"></vue-slider>
   </div>
 </template>
 <script>
+import "vue-slider-component/theme/default.css";
+
 export default {
   data: function() {
     return {
       width: 60,
       height: 0,
       axis: "x",
-      x: 0
+      x: 0,
+      value: [0, 30]
     };
+  },
+  mounted() {
+    console.log(this.value);
   },
   methods: {
     onResize: function(x, _, width) {
       this.x = x;
       this.width = width;
+    },
+    test: function() {
+      console.log(this.value);
     }
   }
 };

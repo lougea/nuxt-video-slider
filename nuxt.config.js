@@ -27,7 +27,13 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["@/plugins/vue-draggable-resizable"],
+  plugins: [
+    "@/plugins/vue-draggable-resizable",
+    {
+      src: "~plugins/vue-slider-component.js",
+      ssr: false
+    }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
