@@ -1,18 +1,23 @@
 <template>
-  <div class="container">
-    <Video />
-    <Bar />
+  <div class="m-8">
+    <Video :slider-value="sliderValue" />
+    <Slider @sliderValue="sliderValue = $event" />
   </div>
 </template>
 
 <script>
-import Bar from "~/components/Bar.vue";
 import Video from "~/components/Video.vue";
+import Slider from "~/components/Slider.vue";
 
 export default {
   components: {
-    Bar,
-    Video
+    Video,
+    Slider
+  },
+  data() {
+    return {
+      sliderValue: []
+    };
   }
 };
 </script>
