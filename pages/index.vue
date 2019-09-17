@@ -1,7 +1,7 @@
 <template>
   <div class="m-8">
     <Video :slider-value="sliderValue" />
-    <Slider @sliderValue="sliderValue = $event" />
+    <Slider @sliderValue="sliderValue = $event" @minMax="minMax = $event" />
   </div>
 </template>
 
@@ -16,7 +16,8 @@ export default {
   },
   data() {
     return {
-      sliderValue: {}
+      sliderValue: {},
+      minMax: []
     };
   }
 };
