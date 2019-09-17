@@ -1,5 +1,5 @@
 export default {
-  mode: "universal",
+  mode: "spa",
   /*
    ** Headers of the page
    */
@@ -29,8 +29,7 @@ export default {
    */
   plugins: [
     {
-      src: "~plugins/vue-slider-component.js",
-      ssr: false
+      src: "~plugins/vue-slider-component.js"
     }
   ],
   /*

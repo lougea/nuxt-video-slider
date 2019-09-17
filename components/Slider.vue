@@ -1,10 +1,10 @@
 <template>
   <div>
     <vue-slider
-      ref="slider"
       v-model="value"
       :enable-cross="false"
-      @change="test()"
+      :min="0"
+      @change="test($event)"
     ></vue-slider>
   </div>
 </template>
@@ -16,11 +16,13 @@ export default {
       value: [0, 30]
     };
   },
-  computed: {},
-  mounted() {},
   methods: {
-    test: function() {
-      this.$emit("sliderValue", this.$refs.slider.getValue());
+    test: function(event) {
+      this.value = event;
+      this.$emit("sliderValue", {
+        start: event[0] / 100,
+        end: event[1] / 100
+      });
     }
   }
 };
